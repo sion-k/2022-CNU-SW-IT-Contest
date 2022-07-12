@@ -1,12 +1,12 @@
-#include "../../../testlib.h"
+#include "testlib.h"
 #include <iostream>
-
+ 
 using namespace std;
-
+ 
 void flip(string &s, int i) {
     s[i] = s[i] == '(' ? ')' : '(';
 }
-
+ 
 string balanced_bracket_sequence_v1(int n) {
     auto res = string(n, '(') + string(n + 1, ')');
     shuffle(res.begin(), res.end());
@@ -18,7 +18,7 @@ string balanced_bracket_sequence_v1(int n) {
     rotate(res.begin(), res.begin() + idx, res.end());
     return res.substr(0, 2 * n);
 }
-
+ 
 int main(int argc, char* argv[]) {
     registerGen(argc, argv, 1);
     int n = rnd.next(1, 10);
