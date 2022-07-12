@@ -1,6 +1,12 @@
 #include <bits/stdc++.h>
 #define SIZE(x) (int)((x).size())
 #define FAST() cin.tie(0)->sync_with_stdio(0)
+#define deb(x) cout << #x << " : " << (x) << "\n"
+#define deb_pair(x, y)                                                         \
+    cout << "(" << #x << ", " << #y << ") : (" << (x) << ", " << (y) << ")\n"
+#define deb_triplet(x, y, z)                                                   \
+    cout << "(" << #x << ", " << #y << ", " << #z << ") : (" << (x) << ", "    \
+         << (y) << ", " << (z) << ")\n"
 using namespace std;
 
 int main() {
@@ -39,7 +45,10 @@ int main() {
         for (int here = 0; here < n; here++) {
             int sum = p[n - 1];
             if (here - 1 >= 0) sum -= p[here - 1];
-            if (s[here] == ')' && (here == 0 || left_min[here - 1] >= 0) && sum <= -2) {
+            if (s[here] == ')' && 
+            (here == 0 || left_min[here - 1] >= 0) && 
+            (here + 1 == n || right_min[here + 1] >= -2) &&
+            sum <= -2) {
                 ret++;
             }
         }
