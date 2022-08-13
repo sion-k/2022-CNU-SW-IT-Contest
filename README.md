@@ -1,6 +1,6 @@
-# TP 2022
+# 2022 CNU SW-IT Contest
 
-2022 생각하는 프로그래밍 대회
+2022 SW-IT Contest Problem
 
 `testlib.h` 파일을 컴파일러 헤더 경로에 넣으면 컴파일이 간단합니다.
 경로 예시
