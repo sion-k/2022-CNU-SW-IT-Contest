@@ -36,3 +36,6 @@
 
 # polygon header
 testlib.h
+
+# package folder
+/package
