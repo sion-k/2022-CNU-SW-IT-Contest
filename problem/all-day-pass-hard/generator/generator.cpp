@@ -4,7 +4,7 @@
 using namespace std;
 
 const int N_MIN = 1, N_MAX = 100'000;
-const int AI_MIN = 1, AI_MAX = 100'000'000;
+const int AI_MIN = 1, AI_MAX = 1'000'000'000;
 
 int main(int argc, char* argv[]) {
     registerGen(argc, argv, 1);
