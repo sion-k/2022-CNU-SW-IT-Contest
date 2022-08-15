@@ -4,7 +4,7 @@
 using namespace std;
 
 const int N_MIN = 1, N_MAX = 100'000;
-const int AI_MIN = 1, AI_MAX = 100;
+const int AI_MIN = 1, AI_MAX = 10;
 
 int main(int argc, char* argv[]) {
     registerValidation(argc, argv);
