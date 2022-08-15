@@ -1,8 +1,11 @@
 #include <bits/stdc++.h>
 
+#define FAST() cin.tie(0)->sync_with_stdio(0)
+
 using namespace std;
 
 int main() {
+    FAST();
     int n;
     cin >> n;
     vector<int> a(n);
