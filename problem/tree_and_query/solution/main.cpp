@@ -2,6 +2,7 @@
 
 #define ALL(x) (x).begin(), (x).end()
 #define SIZE(x) (int)((x).size())
+#define FAST() cin.tie(0)->sync_with_stdio(0)
 
 #define deb(x) cout << #x << " : " << (x) << "\n"
 #define deb_pair(x, y)                                                         \
@@ -15,35 +16,28 @@
 
 using namespace std;
 
-int n;
-vector<int> a, b;
+int n, q;
+vector<int> a;
+vector<pair<int, int>> b;
+
 vector<vector<int>> adj;
 vector<vector<int>> children;
-vector<int> cache;
 
-void construct(int here, int prev) {
+int construct(int here, int prev) {
+    a[here] = 1;
     for (int there : adj[here]) if (there != prev) {
         children[here].push_back(there);
-        construct(there, here);
+        a[here] += construct(there, here);
     }
-}
-
-int dp(int here) {
-    if (cache[here]) return cache[here];
-    int sum = a[here];
-    for (int there : children[here]) {
-        sum += dp(there);
-    }
-    return cache[here] = sum;
+    return a[here];
 }
 
 // (here, there) 간선을 지우고 방향을 바꿈
 void reverse(int here, int there) {
-    cache[here] -= cache[there];
-    if (!b[there]) {
-        b[there] = abs(cache[here] - cache[there]);
-    }
-    cache[there] += cache[here];
+    a[here] -= a[there];
+    b[there].first = max(b[there].first, a[here]);
+    b[there].second = min(b[there].second, a[here]);
+    a[there] += a[here];
 }
 
 void dfs(int here, int prev) {
@@ -54,27 +48,13 @@ void dfs(int here, int prev) {
     }
 }
 
-/*
-10
-2 7 5 2 10 6 9 5 11 4
-1 2
-1 3
-2 4
-2 5
-2 6
-3 7
-6 8
-6 9
-7 10
-*/
 int main() {
-    cin >> n;
+    FAST();
+    cin >> n >> q;
     a = vector<int>(n + 1);
+    b = vector<pair<int, int>>(n + 1, { 1, n });
     adj = vector<vector<int>>(n + 1);
     children = vector<vector<int>>(n + 1);
-    for (int i = 1; i <= n; i++) {
-        cin >> a[i];
-    }
     for (int i = 0; i < n - 1; i++) {
         int u, v;
         cin >> u >> v;
@@ -82,11 +62,10 @@ int main() {
         adj[v].push_back(u);
     }
     construct(1, 1);
-    b = vector<int>(n + 1);
-    cache = vector<int>(n + 1);
-    for (int i = 1; i <= n; i++) {
-        dp(i);
-    }
     dfs(1, 1);
-    deb_tuple(b);
+    for (int i = 0; i < q; i++) {
+        int u;
+        cin >> u;
+        cout << b[u].first << " " << b[u].second << "\n";
+    }
 }
