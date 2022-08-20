@@ -21,13 +21,11 @@ vector<int> a;
 vector<pair<int, int>> b;
 
 vector<vector<int>> adj;
-vector<vector<int>> children;
 
-int construct(int here, int prev) {
+int dfs1(int here, int prev) {
     a[here] = 1;
     for (int there : adj[here]) if (there != prev) {
-        children[here].push_back(there);
-        a[here] += construct(there, here);
+        a[here] += dfs1(there, here);
     }
     return a[here];
 }
@@ -40,10 +38,10 @@ void reverse(int here, int there) {
     a[there] += a[here];
 }
 
-void dfs(int here, int prev) {
-    for (int there : children[here]) if (there != prev) {
+void dfs2(int here, int prev) {
+    for (int there : adj[here]) if (there != prev) {
         reverse(here, there);
-        dfs(there, here);
+        dfs2(there, here);
         reverse(there, here);
     }
 }
@@ -54,15 +52,14 @@ int main() {
     a = vector<int>(n + 1);
     b = vector<pair<int, int>>(n + 1, { 1, n });
     adj = vector<vector<int>>(n + 1);
-    children = vector<vector<int>>(n + 1);
     for (int i = 0; i < n - 1; i++) {
         int u, v;
         cin >> u >> v;
         adj[u].push_back(v);
         adj[v].push_back(u);
     }
-    construct(1, 1);
-    dfs(1, 1);
+    dfs1(1, 1);
+    dfs2(1, 1);
     for (int i = 0; i < q; i++) {
         int u;
         cin >> u;
