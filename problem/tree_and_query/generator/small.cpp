@@ -3,8 +3,8 @@
 
 using namespace std;
 
-const int N_MIN = 1, N_MAX = 100'000;
-const int T_MIN = -1000, T_MAX = 1000;
+const int N_MIN = 1, N_MAX = 1'000;
+const int T_MIN = -1'000, T_MAX = 1'000;
 
 int main(int argc, char* argv[]) {
     registerGen(argc, argv, 1);
