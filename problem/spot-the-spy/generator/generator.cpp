@@ -4,7 +4,7 @@
 #define ALL(x) (x).begin(), (x).end()
 using namespace std;
 
-const int NM_MIN = 2, NM_MAX = 10;
+const int NM_MIN = 2, NM_MAX = 100;
 
 int main(int argc, char* argv[]) {
     registerGen(argc, argv, 1);
