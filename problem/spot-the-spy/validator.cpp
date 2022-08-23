@@ -19,8 +19,9 @@ int solve(int n, int p, vector<int> &a) {
     return (x == n * m) && (k % m) ? k : 0;
 }
 
-const int N_MIN = 2, N_MAX = 100;
-const int AI_MIN = 2, AI_MAX = 10'000;
+const int N_MIN = 2, N_MAX = 100'000;
+const int M_MIN = 2, M_MAX = 100'000;
+const int AI_MIN = 2, AI_MAX = 1'000'000'000;
 
 int main(int argc, char* argv[]) {
     registerValidation(argc, argv);
@@ -36,7 +37,7 @@ int main(int argc, char* argv[]) {
     ensuref((zro > 0) ^ (one > 0), "zro=%d, one=%d the answer must be exists and unique", zro, one);
 
     int m = solve(n, 0, a) ? a[0] : a[1];
-    ensuref(2 <= m && m <= 100, "m=%d must be in range [2..100]", m);
+    ensuref(M_MIN <= m && m <= M_MAX, "m=%d must be in range [%d..%d]", m, M_MIN, M_MAX);
 
     int k = zro + one;
     ensuref(k % m, "k=%d must be not divisible by m=%d", k, m);
