@@ -9,6 +9,8 @@ int main(int argc, char* argv[]) {
     registerValidation(argc, argv);
     int n = inf.readInt(N_MIN, N_MAX, "n");
     inf.readEoln();
+    vector<int> a = inf.readInts(n, 0, 1, "a");
+    inf.readEoln();
     for (int i = 0; i < n - 1; i++) {
         int u = inf.readInt(N_MIN, N_MAX, "u");
         inf.readSpace();
