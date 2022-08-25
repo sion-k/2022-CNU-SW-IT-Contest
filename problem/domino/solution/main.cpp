@@ -11,7 +11,7 @@ int lps(int n, vector<int> &a, int start) {
             cnt++;
         }
     }
-    return sum;
+    return cnt;
 }
 
 int main() {
