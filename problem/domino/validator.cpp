@@ -3,8 +3,8 @@
 
 using namespace std;
 
-const int N_MIN = 1, N_MAX = 5'000;
-const int AI_MIN = 1, AI_MAX = 10'000;
+const int N_MIN = 1, N_MAX = 1'000;
+const int AI_MIN = 1, AI_MAX = 1'000'000;
 
 int main(int argc, char* argv[]) {
     registerValidation(argc, argv);
