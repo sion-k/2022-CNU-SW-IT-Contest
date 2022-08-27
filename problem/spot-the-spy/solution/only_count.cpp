@@ -26,6 +26,13 @@ int main() {
         cin >> x;
     }
     sort(ALL(a));
-    int k = solve(n, 0, a) ^ solve(n, 1, a);
+    int k;
+    int c1 = solve(n, 0, a);
+    int c2 = solve(n, 1, a);
+    if (c1 && c2) {
+        k = min(c1, c2);
+    } else {
+        k = max(c1, c2);
+    }
     cout << k << "\n";
 }
