@@ -13,5 +13,5 @@ int main() {
     for (int i = 0; i < n; i++) {
         c[a[i] % 2]++;
     }
-    cout << (c[0] == c[1]) << "\n";
+    cout << (c[0] + 1 == c[1]) << "\n";
 }
