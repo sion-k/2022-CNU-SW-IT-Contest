@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
 
+#define FAST() cin.tie(0)->sync_with_stdio(0)
+
 using namespace std;
 
 int query(int n, vector<int>& a, int l, int r) {
@@ -13,6 +15,7 @@ int query(int n, vector<int>& a, int l, int r) {
 }
 
 int main() {
+    FAST();
     int n;
     cin >> n;
     vector<int> a(n);
