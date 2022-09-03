@@ -3,7 +3,7 @@
 
 using namespace std;
 
-const int N_MIN = 2, N_MAX = 100;
+const int N_MIN = 91, N_MAX = 100;
 
 int main(int argc, char* argv[]) {
     registerGen(argc, argv, 1);
