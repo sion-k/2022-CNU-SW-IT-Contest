@@ -1,22 +1,21 @@
 #include <bits/stdc++.h>
 
-#define FAST() cin.tie(0)->sync_with_stdio(0)
-
 using namespace std;
 
+const int INF = 1e9 - 1;
+
 int main() {
-    FAST();
     int n;
     cin >> n;
     vector<int> a(n);
     for (auto &x : a) {
         cin >> x;
     }
-    int max = 0;
+    int min = a[0], max = 0;
     for (int i = 0; i < n; i++) {
-        for (int j = i; j < n; j++) {
-            max = ::max(max, a[j] - a[i]);
-        }
+        min = ::min(min, a[i]);
+        max = ::max(max, a[i] - min);
     }
+    assert(max != INF);
     cout << max << "\n";
 }

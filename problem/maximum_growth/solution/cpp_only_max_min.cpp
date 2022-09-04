@@ -2,16 +2,7 @@
 
 using namespace std;
 
-const int INF = 1e9;
-
-int query(int n, vector<int>& a, int l, int r) {
-    int max = -INF, min = INF;
-    for (int i = l; i <= r; i++) {
-        max = ::max(max, a[i]);
-        min = ::min(min, a[i]);
-    }
-    return max - min;
-}
+const int INF = 1e9 + 1;
 
 int main() {
     int n;
@@ -20,19 +11,12 @@ int main() {
     for (auto &x : a) {
         cin >> x;
     }
-    int q;
-    cin >> q;
-    for (int i = 0; i < q; i++) {
-        int o;
-        cin >> o;
-        if (o == 1) {
-            int k, v;
-            cin >> k >> v;
-            a[k - 1] = v;
-        } else {
-            int l, r;
-            cin >> l >> r;
-            cout << query(n, a, l - 1, r - 1) << "\n";
-        }
+    int ret = 0;
+    int max = -INF, min = INF;
+    for (int i = 0; i < n; i++) {
+        max = ::max(max, a[i]);
+        min = ::min(min, a[i]);
+        ret = ::max(ret, max - min);
     }
+    cout << ret << "\n";
 }
