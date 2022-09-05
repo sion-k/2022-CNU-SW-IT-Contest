@@ -3,7 +3,7 @@
 using namespace std;
 
 bool prime(int x) {
-    for (int i = 2; i * i <= x; i++) {
+    for (int i = 2; i * i < x; i++) {
         if (x % i == 0) {
             return false;
         }
@@ -26,7 +26,6 @@ int main() {
             yj++;
         }
     }
-    // cout << yt << ", " << yj << "\n";
     yt += (common + 1) / 2;
     yj += common / 2;
     cout << (yt > yj ? "yt" : "yj") << "\n";
