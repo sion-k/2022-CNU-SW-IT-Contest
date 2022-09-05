@@ -3,12 +3,17 @@
 
 using namespace std;
 
-const int N_MIN = 1, N_MAX = 10;
+const int RANGE_MIN = 2, RANGE_MAX = 1'000;
 
 int main(int argc, char* argv[]) {
     registerValidation(argc, argv);
-    int n = inf.readInt(N_MIN, N_MAX, "n");
+    int a = inf.readInt(RANGE_MIN, RANGE_MAX, "a");
+    inf.readSpace();
+    int b = inf.readInt(RANGE_MIN, RANGE_MAX, "b");
+    inf.readSpace();
+    int c = inf.readInt(RANGE_MIN, RANGE_MAX, "c");
+    inf.readSpace();
+    int d = inf.readInt(RANGE_MIN, RANGE_MAX, "d");
     inf.readEoln();
     inf.readEof();
-    ensuref(true, "This condition must be true");
 }
