@@ -14,19 +14,19 @@ bool prime(int x) {
 int main() {
     int a, b, c, d;
     cin >> a >> b >> c >> d;
-    pair<int, int> cnt;
-    int com = 0;
+    int yt = 0, yj = 0;
+    int common = 0;
     for (int i = 2; i <= 1000; i++) {
         if (!prime(i)) continue;
         if (a <= i && i <= b && c <= i && i <= d) {
-            com++;
+            common++;
         } else if (a <= i && i <= b) {
-            cnt.first++;
+            yt++;
         } else if (c <= i && i <= d) {
-            cnt.second++;
+            yj++;
         }
     }
-    int p = (com + 1) / 2 + cnt.first;
-    int q = com / 2 + cnt.second;
-    cout << (p > q ? "yt" : "yj") << "\n";
+    yt += (common + 1) / 2;
+    yj += common / 2;
+    cout << (yt > yj ? "yt" : "yj") << "\n";
 }
