@@ -7,7 +7,7 @@
 using namespace std;
 
 // 범위가 서로 겹치지 않고 한 쪽 범위가 나머지 한 쪽 범위보다 소수의 개수가 1개 많은 데이터
-const int LEFT_MIN = 2, RANGE_MAX = 1'000;
+const int RANGE_MIN = 2, RANGE_MAX = 400;
 
 // 2부터 1000까지 소수의 개수
 const int PRIME_COUNT = 168;
@@ -42,7 +42,7 @@ int main(int argc, char* argv[]) {
 
     // 소수의 개수 별로 구간을 모두 저장
     vector<vector<pair<int, int>>> range(PRIME_COUNT + 1);
-    for (int i = LEFT_MIN; i <= RANGE_MAX; i++) {
+    for (int i = RANGE_MIN; i <= RANGE_MAX; i++) {
         for (int j = i; j <= RANGE_MAX; j++) {
             int cnt = p[j] - p[i - 1];
             range[cnt].emplace_back(i, j);
