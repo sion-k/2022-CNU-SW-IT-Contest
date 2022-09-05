@@ -10,7 +10,7 @@ int main(int argc, char* argv[]) {
     int a = inf.readInt(RANGE_MIN, RANGE_MAX, "a");
     inf.readSpace();
     int b = inf.readInt(RANGE_MIN, RANGE_MAX, "b");
-    inf.readSpace();
+    inf.readEoln();
     int c = inf.readInt(RANGE_MIN, RANGE_MAX, "c");
     inf.readSpace();
     int d = inf.readInt(RANGE_MIN, RANGE_MAX, "d");
