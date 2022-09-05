@@ -7,7 +7,7 @@
 using namespace std;
 
 // 두 범위에 포함된 소수의 개수가 같은 데이터
-const int LEFT_MIN = 2, RANGE_MAX = 1'000;
+const int RNAGE_MIN = 2, RANGE_MAX = 1'000;
 
 // 2부터 1000까지 소수의 개수
 const int PRIME_COUNT = 168;
@@ -34,7 +34,7 @@ int main(int argc, char* argv[]) {
     }
 
     // 겹치는 구간
-    int c = rnd.next(LEFT_MIN, RANGE_MAX);
+    int c = rnd.next(RNAGE_MIN, RANGE_MAX);
     int b = rnd.next(c, RANGE_MAX);
     int a = c, d = b;
 
