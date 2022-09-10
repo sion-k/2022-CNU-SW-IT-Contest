@@ -3,8 +3,8 @@
 
 using namespace std;
 
-const int N_MIN = 1, N_MAX = 1'000;
-const int T_MIN = -1'000, T_MAX = 1'000;
+const int N_MIN = 999'95, N_MAX = 100'000;
+const int T_MIN = -1000, T_MAX = 1000;
 
 int main(int argc, char* argv[]) {
     registerGen(argc, argv, 1);
@@ -44,9 +44,11 @@ int main(int argc, char* argv[]) {
     for (auto &e : edges) {
         cout << e.first + 1 << " " << e.second + 1 << "\n";
     }
-    int q = n;
+    
+    int q = rnd.next(1, n);
     cout << q << "\n";
-    for (int i = 1; i <= q; i++) {
-        cout << i << "\n";
+    for (int i = 0; i < q; i++) {
+        int u = rnd.next(1, n);
+        cout << u << "\n";
     }
 }
