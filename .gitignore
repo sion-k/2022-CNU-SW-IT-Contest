@@ -39,3 +39,6 @@ testlib.h
 
 # package folder
 /package
+
+# editorial
+/ucpc2020-solutions-theme
