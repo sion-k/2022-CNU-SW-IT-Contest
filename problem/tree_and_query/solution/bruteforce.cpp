@@ -17,8 +17,10 @@ using namespace std;
 vector<vector<int>> adj;
 
 vector<int> a;
+
 vector<vector<int>> p;
-vector<int> c;
+
+vector<long long> c;
 
 // start 정점에서 시작하는 길이 3 이상의 단순 경로 모두 반환
 // a[start] != a[end] 여야 한다.
@@ -32,8 +34,6 @@ void dfs(int here, int prev, vector<int> path) {
     }
     path.pop_back();
 }
-
-const int MOD = 1e9 + 7;
 
 int main() {
     FAST();
@@ -53,16 +53,18 @@ int main() {
     for (int here = 1; here <= n; here++) {
         dfs(here, here, vector<int>());
     }
-    c = vector<int>(n + 1);
-    for (auto &e : p) {
+
+    c = vector<long long>(n + 1);
+    for (auto& e : p) {
         for (int i = 1; i < SIZE(e) - 1; i++) {
             c[e[i]]++;
         }
     }
-    // wron with modulo
+
     for (int i = 1; i <= n; i++) {
         c[i] /= 2;
     }
+
     int q;
     cin >> q;
     for (int i = 0; i < q; i++) {

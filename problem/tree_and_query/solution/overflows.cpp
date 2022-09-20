@@ -32,10 +32,9 @@ void dfs(int here, int prev) {
     }
 }
 
-const int MOD = 1e9 + 7;
 int sum_of_b;
 
-vector<int> c;
+vector<long long> c;
 
 void move(int here, int there) {
     r[here] -= r[there], b[here] -= b[there];
@@ -44,7 +43,7 @@ void move(int here, int there) {
 
 void construct(int here, int prev) {
     for (int there : adj[here]) {
-        c[here] = (c[here] + r[there] * (sum_of_b - (a[here] == 0) - b[there])) % MOD;
+        c[here] += r[there] * (sum_of_b - (a[here] == 0) - b[there]);
     }
     for (int there : adj[here]) if (there != prev) {
         move(here, there);
@@ -74,7 +73,7 @@ int main() {
     dfs(1, 1);
     int q;
     cin >> q;
-    c = vector<int>(n + 1);
+    c = vector<long long>(n + 1);
     construct(1, 1);
     for (int i = 0; i < q; i++) {
         int u;

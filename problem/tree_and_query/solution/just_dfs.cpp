@@ -18,13 +18,12 @@ vector<int> a;
 
 vector<vector<int>> adj;
 
-const int MOD = 1e9 + 7;
-
 // 빨간 정점과 파란 정점의 개수 반환
 pair<int, int> dfs(int here, int prev) {
     pair<int, int> ret;
     if (a[here]) ret.first++;
     else ret.second++;
+
     for (int there : adj[here]) if (there != prev) {
         pair<int, int> cand = dfs(there, here);
         ret.first += cand.first;
@@ -55,17 +54,20 @@ int main() {
     for (int i = 0; i < q; i++) {
         int here;
         cin >> here;
+
         vector<pair<int, int>> children;
         for (int there : adj[here]) {
             children.push_back(dfs(there, here));
         }
+
         int b_sum = 0;
-        for (auto &ch : children) {
+        for (auto& ch : children) {
             b_sum += ch.second;
         }
-        int ret = 0;
-        for (auto &ch : children) {
-            ret = (ret + (long long)ch.first * (b_sum - ch.second)) % MOD;
+
+        long long ret = 0;
+        for (auto& ch : children) {
+            ret += (long long)ch.first * (b_sum - ch.second);
         }
         cout << ret << "\n";
     }

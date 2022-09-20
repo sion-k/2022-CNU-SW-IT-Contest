@@ -32,10 +32,9 @@ void dfs(int here, int prev) {
     }
 }
 
-const int MOD = 1e9 + 7;
 int sum_of_b;
 
-vector<int> c;
+vector<long long> c;
 
 void move(int here, int there) {
     r[here] -= r[there], b[here] -= b[there];
@@ -44,7 +43,7 @@ void move(int here, int there) {
 
 void construct(int here, int prev) {
     for (int there : adj[here]) {
-        c[here] = (c[here] + (long long)r[there] * (sum_of_b - (a[here] == 0) - b[there])) % MOD;
+        c[here] += (long long)r[there] * (sum_of_b - (a[here] == 0) - b[there]);
     }
     for (int there : adj[here]) if (there != prev) {
         move(here, there);
@@ -55,13 +54,16 @@ void construct(int here, int prev) {
 
 int main() {
     FAST();
+
     int n;
     cin >> n;
     a = vector<int>(n + 1);
     for (int i = 1; i <= n; i++) {
         cin >> a[i];
     }
+
     sum_of_b = n - accumulate(ALL(a), 0);
+
     adj = vector<vector<int>>(n + 1);
     for (int i = 0; i < n - 1; i++) {
         int u, v;
@@ -69,13 +71,16 @@ int main() {
         adj[u].push_back(v);
         adj[v].push_back(u);
     }
+
     r = vector<int>(n + 1);
     b = vector<int>(n + 1);
     dfs(1, 1);
+
+    c = vector<long long>(n + 1);
+    construct(1, 1);
+
     int q;
     cin >> q;
-    c = vector<int>(n + 1);
-    construct(1, 1);
     for (int i = 0; i < q; i++) {
         int u;
         cin >> u;
