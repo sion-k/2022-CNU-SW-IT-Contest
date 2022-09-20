@@ -13,10 +13,14 @@ int main(int argc, char* argv[]) {
     int b = inf.readInt(RANGE_MIN, RANGE_MAX, "b");
     inf.readEoln();
 
+    ensuref(a <= b, "%d <= %d", a, b);
+
     int c = inf.readInt(RANGE_MIN, RANGE_MAX, "c");
     inf.readSpace();
     int d = inf.readInt(RANGE_MIN, RANGE_MAX, "d");
     inf.readEoln();
-    
+
+    ensuref(c <= d, "%d <= %d", c, d);
+
     inf.readEof();
 }
