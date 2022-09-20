@@ -3,30 +3,30 @@
 
 using namespace std;
 
-const int N_MIN = 1, N_MAX = 5;
+const int N_MIN = 1, N_MAX = 10;
 const int T_MIN = -1'000, T_MAX = 1'000;
 
 int main(int argc, char* argv[]) {
     registerGen(argc, argv, 1);
     int n = rnd.next(N_MIN, N_MAX);
     int t = rnd.next(T_MIN, T_MAX);
-    
+
     cout << n << "\n";
-    
+
     for (int i = 0; i < n; i++) {
         int ai = rnd.next(0, 1);
         cout << ai << " \n"[i == n - 1];
     }
-    
+
     vector<int> p(n);
     /* setup parents for vertices 1..n-1 */
-    for(int i = 1; i <= n - 1; i++) {
+    for (int i = 1; i <= n - 1; i++) {
         p[i] = rnd.wnext(i, t);
     }
 
     /* shuffle vertices 1..n-1 */
     vector<int> perm(n);
-    for(int i = 1; i <= n - 1; i++) {
+    for (int i = 1; i <= n - 1; i++) {
         perm[i] = i;
     }
 
@@ -42,7 +42,7 @@ int main(int argc, char* argv[]) {
         }
     }
 
-    for (auto &e : edges) {
+    for (auto& e : edges) {
         cout << e.first + 1 << " " << e.second + 1 << "\n";
     }
 
